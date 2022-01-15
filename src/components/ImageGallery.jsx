@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { Error } from './ImageError';
 import { GalleryApi } from "../servises/Gallery-api";
 
+
 export class ImageGallery extends Component {
     state = {
-       pictures: {},
+       pictures: null,
        error: null,
        status: 'Idle'
     };
@@ -19,7 +20,7 @@ export class ImageGallery extends Component {
 
             GalleryApi(nextName)
             .then(pictures  => this.setState({ pictures, status: 'resolved' }))
-            .catch(error => this.setState({ error, status: 'rejected' }))     
+            .catch(error => this.setState({ error, status: 'rejected' }))
         };    
     };
 
