@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { Loader } from './components/Loader';
+
 import './App.css';
 import { Searchbar } from './components/Searchbar';
 import { ImageGallery } from './components/ImageGallery';
@@ -27,12 +27,13 @@ class App extends Component {
         <button type="button" onClick={this.toggleModal}>
           Open modal
         </button>
+        
         {showModal && (
           <Modal onClose={this.toggleModal}>
             <button onClick={this.toggleModal}>Close</button>
           </Modal>
         )}
-        <Loader />
+        
         <Searchbar onSubmit={this.handleFormSubmit}/>
         <ImageGallery pictureName={this.state.pictureName}/>
         <Toaster />

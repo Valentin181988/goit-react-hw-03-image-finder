@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import toast from 'react-hot-toast';
-
 export class Searchbar extends Component {
     state = {
         pictureName: ''

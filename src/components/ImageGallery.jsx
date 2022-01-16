@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Loader } from '../components/Loader';
 import { Error } from './ImageError';
 import { GalleryApi } from "../servises/Gallery-api";
 
@@ -14,7 +15,7 @@ export class ImageGallery extends Component {
         const prevName = prevProps.pictureName;
         const nextName = this.props.pictureName;
 
-        if (prevName !== this.props.nextName) {
+        if (prevName !== nextName) {
 
             this.setState({status: 'pending',});
 
@@ -32,7 +33,7 @@ export class ImageGallery extends Component {
         };
 
         if(status === 'pending') {
-            return <div>Loading ...</div>
+            return <Loader />
         };
 
         if(status === 'rejected') {
@@ -48,9 +49,7 @@ export class ImageGallery extends Component {
                                 <img src={picture.webformatURL} alt={picture.tag} />
                             </li>
                         );
-                    })
-                    
-                  }
+                    })}
               </ul>
             );
         }
