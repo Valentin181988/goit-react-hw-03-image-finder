@@ -7,8 +7,20 @@ export const GalleryApi = (name) => {
             
         };
 
+           throw new Error('An error has occured.')       
+
+    }).then(data => {
+
+        if(data.total === 0) {
+            return Promise.reject(
+                new Error(`There is no picture with name ${name}`),
+                );
+        };
+        
+        return data;
+    }).catch(error => {
         return Promise.reject(
-            new Error(`There is no picture with name ${name}`),
-            );
+            new Error('An error has occured.')
+        )
     })
 }

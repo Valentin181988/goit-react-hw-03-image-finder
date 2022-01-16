@@ -20,14 +20,16 @@ export class ImageGallery extends Component {
             this.setState({status: 'pending',});
 
             GalleryApi(nextName)
-            .then(pictures  => this.setState({ pictures, status: 'resolved' }))
+            .then(pictures  => {
+                console.log(pictures)
+                this.setState({ pictures, status: 'resolved' })})
             .catch(error => this.setState({ error, status: 'rejected' }))
         };    
     };
 
     render() {
         const { pictures, error, status } = this.state;
-
+     console.log(status)
         if(status === 'Idle') {
             return <p>Please enter the picture name</p>
         };
