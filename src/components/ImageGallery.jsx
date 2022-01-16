@@ -2,13 +2,18 @@ import React, { Component } from "react";
 import { Loader } from '../components/Loader';
 import { Error } from './ImageError';
 import { GalleryApi } from "../servises/Gallery-api";
+import { LoadBtn } from "./Button";
+import { Modal } from "./Modal/Modal";
 
 
 export class ImageGallery extends Component {
     state = {
        pictures: null,
        error: null,
-       status: 'Idle'
+       page: 1,
+       showModal: false,
+       status: 'Idle',
+       modalPicture: null
     };
 
     componentDidUpdate(prevProps, prevState) {
@@ -19,7 +24,7 @@ export class ImageGallery extends Component {
 
             this.setState({status: 'pending',});
 
-            GalleryApi(nextName)
+            GalleryApi(nextName, this.state.page)
             .then(pictures  => {
                 console.log(pictures)
                 this.setState({ pictures, status: 'resolved' })})
@@ -27,9 +32,31 @@ export class ImageGallery extends Component {
         };    
     };
 
+    onLoadMore = () => {
+        this.setState({status: 'pending',});
+        this.setState({page: this.state.page + 1});
+
+        console.log(this.state.page)
+
+        const nextName = this.props.pictureName;
+
+            GalleryApi(nextName, this.state.page + 1)
+            .then(nextPictures  => {
+                
+                const pictures = this.state.pictures.concat(nextPictures)
+
+                console.log(pictures)
+                this.setState({ pictures, status: 'resolved' })})
+            .catch(error => this.setState({ error, status: 'rejected' }))
+    };
+
+    toggleModal = (picture) => {
+        this.setState(state => ({ showModal: !state.showModal, modalPicture: picture }));
+      };
+
     render() {
-        const { pictures, error, status } = this.state;
-     console.log(status)
+        const { pictures, error, status, showModal, modalPicture } = this.state;
+     
         if(status === 'Idle') {
             return <p>Please enter the picture name</p>
         };
@@ -44,16 +71,27 @@ export class ImageGallery extends Component {
 
         if(status === 'resolved') {
             return(
-              <ul>
-                  {pictures.hits.map(picture => {
-                        return(
-                            <li key={picture.id}>
-                                <img src={picture.webformatURL} alt={picture.tag} />
-                            </li>
-                        );
-                    })}
-              </ul>
+                <div>
+                    <ul>
+                        {pictures.map(picture => {
+                                return(
+                                    <li key={picture.id} onClick={() => this.toggleModal(picture)}>
+                                        <img src={picture.webformatURL} alt={picture.tag} />
+                                    </li>
+                                );
+                            })}
+                    </ul>
+
+                    <LoadBtn onClick={this.onLoadMore}/>
+   
+                    {showModal && (
+                        <Modal onClose={this.toggleModal}>
+                            <button onClick={this.toggleModal}>Close</button>
+                            <img src={modalPicture.largeImageURL} alt={modalPicture.tag} />
+                        </Modal>
+                    )}
+                </div>
             );
-        }
+        }  
     };
 }
