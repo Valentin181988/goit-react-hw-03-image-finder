@@ -61,7 +61,7 @@ export class ImageGallery extends Component {
         const { pictures, error, status, showModal, modalPicture } = this.state;
      
         if(status === 'Idle') {
-            return <p>Please enter a keyword to search </p>
+            return <p>Please enter a keyword to search a pictures</p>
         };
 
         if(status === 'pending') {

@@ -7,6 +7,7 @@ import { SearchBar,
     SearchFormBtn,
     SearchFormBtnLabel } from './Searchbar.styled';
 
+    const BgBtnimage = {uri: ("https://image.flaticon.com/icons/svg/149/149852.svg")};
 export class Searchbar extends Component {
     state = {
         pictureName: ''
@@ -31,7 +32,7 @@ export class Searchbar extends Component {
         return(
             <SearchBar>
                 <SearchForm onSubmit={this.handleSubmit}>
-                    <SearchFormBtn type="submit">
+                    <SearchFormBtn type="submit" >
                        <SearchFormBtnLabel>Search</SearchFormBtnLabel>
                     </SearchFormBtn>
 
