@@ -20,7 +20,7 @@ export const GalleryApi = (name, page) => {
         return data.hits;
     }).catch(error => {
         return Promise.reject(
-            new Error('An error has occured.')
+            new Error(`There is no picture with name ${name}`)
         )
     })
 }

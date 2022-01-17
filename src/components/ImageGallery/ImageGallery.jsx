@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import { Loader } from '../components/Loader';
-import { Error } from './ImageError';
-import { GalleryApi } from "../servises/Gallery-api";
-import { LoadBtn } from "./Button";
-import { Modal } from "./Modal/Modal";
+import { Loader } from '../Loader/Loader';
+import { Error } from '../PictureError/ImageError';
+import { GalleryApi } from "../../servises/Gallery-api";
+import { LoadBtn } from "../Button/Button";
+import { Modal } from "../Modal/Modal";
+import { ImageGalleryItem } from "../ImageGalleryItem/ImageGalleryItem";
+
+import { ImageGalleryWrapper } from './ImageGallery.styled';
 
 
 export class ImageGallery extends Component {
@@ -71,16 +74,10 @@ export class ImageGallery extends Component {
 
         if(status === 'resolved') {
             return(
-                <div>
-                    <ul>
-                        {pictures.map(picture => {
-                                return(
-                                    <li key={picture.id} onClick={() => this.toggleModal(picture)}>
-                                        <img src={picture.webformatURL} alt={picture.tag} />
-                                    </li>
-                                );
-                            })}
-                    </ul>
+                <>
+                    <ImageGalleryWrapper>
+                        <ImageGalleryItem pictures={pictures} onClick={this.toggleModal}/>
+                    </ImageGalleryWrapper>
 
                     <LoadBtn onClick={this.onLoadMore}/>
    
@@ -90,7 +87,7 @@ export class ImageGallery extends Component {
                             <img src={modalPicture.largeImageURL} alt={modalPicture.tag} />
                         </Modal>
                     )}
-                </div>
+                </>
             );
         }  
     };
