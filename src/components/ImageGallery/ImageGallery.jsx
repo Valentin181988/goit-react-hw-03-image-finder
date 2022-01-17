@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Loader } from '../Loader/Loader';
 import { Error } from '../PictureError/ImageError';
 import { GalleryApi } from "../../servises/Gallery-api";
-import { LoadBtn } from "../Button/Button";
+import { LoadBtn } from "../LoadMoreBtn/LoadMoreBtn";
 import { Modal } from "../Modal/Modal";
 import { ImageGalleryItem } from "../ImageGalleryItem/ImageGalleryItem";
 
@@ -61,7 +61,7 @@ export class ImageGallery extends Component {
         const { pictures, error, status, showModal, modalPicture } = this.state;
      
         if(status === 'Idle') {
-            return <p>Please enter the picture name</p>
+            return <p>Please enter a keyword to search </p>
         };
 
         if(status === 'pending') {
