@@ -16,3 +16,5 @@ export const ImageGalleryWrapper = styled.ul`
 export const ImageGalleryText = styled.p`
    text-align: center;
 `;
+
+

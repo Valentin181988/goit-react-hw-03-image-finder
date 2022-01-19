@@ -8,7 +8,8 @@ import { LoadBtn } from "../LoadMoreBtn/LoadMoreBtn";
 import { Modal } from "../Modal/Modal";
 import { ImageGalleryItem } from "../ImageGalleryItem/ImageGalleryItem";
 
-import { ImageGalleryWrapper, ImageGalleryText } from './ImageGallery.styled';
+import { ImageGalleryWrapper, 
+         ImageGalleryText } from './ImageGallery.styled';
 
 
 export class ImageGallery extends Component {
@@ -85,7 +86,6 @@ export class ImageGallery extends Component {
    
                     {showModal && (
                         <Modal onClose={this.toggleModal}>
-                            <button onClick={this.toggleModal}>Close</button>
                             <img src={modalPicture.largeImageURL} alt={modalPicture.tag} />
                         </Modal>
                     )}
