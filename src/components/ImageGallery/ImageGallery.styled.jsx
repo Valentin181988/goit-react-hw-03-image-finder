@@ -12,3 +12,7 @@ export const ImageGalleryWrapper = styled.ul`
   margin-left: auto;
   margin-right: auto;
 `;
+
+export const ImageGalleryText = styled.p`
+   text-align: center;
+`;

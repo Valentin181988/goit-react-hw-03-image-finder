@@ -6,7 +6,7 @@ import { LoadBtn } from "../LoadMoreBtn/LoadMoreBtn";
 import { Modal } from "../Modal/Modal";
 import { ImageGalleryItem } from "../ImageGalleryItem/ImageGalleryItem";
 
-import { ImageGalleryWrapper } from './ImageGallery.styled';
+import { ImageGalleryWrapper, ImageGalleryText } from './ImageGallery.styled';
 
 
 export class ImageGallery extends Component {
@@ -61,7 +61,7 @@ export class ImageGallery extends Component {
         const { pictures, error, status, showModal, modalPicture } = this.state;
      
         if(status === 'Idle') {
-            return <p>Please enter a keyword to search a pictures</p>
+            return <ImageGalleryText>Please enter a keyword to search a pictures</ImageGalleryText>
         };
 
         if(status === 'pending') {
