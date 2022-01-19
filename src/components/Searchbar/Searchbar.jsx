@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import toast from 'react-hot-toast';
+import { FcSearch } from "react-icons/fc";
 
 import { SearchBar, 
     SearchForm, 
@@ -32,8 +33,8 @@ export class Searchbar extends Component {
         return(
             <SearchBar>
                 <SearchForm onSubmit={this.handleSubmit}>
-                    <SearchFormBtn type="submit" >
-                       <SearchFormBtnLabel>Search</SearchFormBtnLabel>
+                    <SearchFormBtn type="submit">
+                       <FcSearch size={25}/>
                     </SearchFormBtn>
 
                     <SearchInput
@@ -46,6 +47,7 @@ export class Searchbar extends Component {
                     />
                 </SearchForm>
             </SearchBar>
+            
         );
     };
 }
