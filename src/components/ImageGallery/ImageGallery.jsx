@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
+
 import { Loader } from '../Loader/Loader';
 import { Error } from '../PictureError/ImageError';
 import { GalleryApi } from "../../servises/Gallery-api";
@@ -91,4 +93,8 @@ export class ImageGallery extends Component {
             );
         }  
     };
-}
+};
+
+ImageGallery.propTypes = {
+    pictureName: PropTypes.string
+};

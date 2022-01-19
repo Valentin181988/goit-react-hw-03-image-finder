@@ -1,14 +1,14 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import toast from 'react-hot-toast';
 import { FcSearch } from "react-icons/fc";
 
 import { SearchBar, 
     SearchForm, 
     SearchInput,
-    SearchFormBtn,
-    SearchFormBtnLabel } from './Searchbar.styled';
+    SearchFormBtn} from './Searchbar.styled';
 
-    const BgBtnimage = {uri: ("https://image.flaticon.com/icons/svg/149/149852.svg")};
+    
 export class Searchbar extends Component {
     state = {
         pictureName: ''
@@ -51,3 +51,7 @@ export class Searchbar extends Component {
         );
     };
 }
+
+Searchbar.propTypes = {
+    onSubmit: PropTypes.func
+};

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { Searchbar } from './components/Searchbar/Searchbar';
 import { ImageGallery } from './components/ImageGallery/ImageGallery';
-import { Modal } from './components/Modal/Modal';
-
 
 class App extends Component {
   state = {
