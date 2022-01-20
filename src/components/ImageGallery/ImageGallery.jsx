@@ -83,7 +83,7 @@ export class ImageGallery extends Component {
                     </ImageGalleryWrapper>
 
                     <LoadBtn onClick={this.onLoadMore}/>
-   
+                    
                     {showModal && (
                         <Modal onClose={this.toggleModal}>
                             <img src={modalPicture.largeImageURL} alt={modalPicture.tag} />
