@@ -1,4 +1,4 @@
-import { ImageGalleryItems } from "./ImageGalleryItem.styled";
+import { ImageGalleryItems, ImageGalleryItemImg } from "./ImageGalleryItem.styled";
 import PropTypes from 'prop-types';
 
 export const ImageGalleryItem = ({pictures, onClick}) => {
@@ -7,7 +7,7 @@ export const ImageGalleryItem = ({pictures, onClick}) => {
         {pictures.map(picture => {
           return(
               <ImageGalleryItems key={picture.id} onClick={() => onClick(picture)}>
-                  <img src={picture.webformatURL} alt={picture.tag} />
+                  <ImageGalleryItemImg src={picture.webformatURL} alt={picture.tag} />
               </ImageGalleryItems>
           );
         })}
